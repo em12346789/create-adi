@@ -1,0 +1,20 @@
+name: Gen-1
+on: workflow_dispatch
+permissions:
+  contents: write
+env: 
+  F_PASS: ${{ secrets.F_PASS }}
+jobs:
+  GenerateScript:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: | 
+          wget 'https://github.com/em12346789/create-adi/releases/download/in/in.7z'
+          7z x -y -p"$F_PASS" in.7z
+      - run: ./create-alpine-disk-image --arch x86_64 --barebones --cloud aliyun --release 3.18  --script-host-arch x86_64 --script-host-os ubuntu --script-filename create.sh
+      - run: sudo apt update
+      - run: sudo apt install coreutils jq mount qemu-utils util-linux wget parted e2fsprogs binfmt-support qemu-user-static 
+      - run: sudo ./create.sh
+      - run: php post.php
