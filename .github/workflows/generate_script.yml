@@ -1,4 +1,4 @@
-name: AlpineCloud
+name: GenerateScript
 on: workflow_dispatch
 permissions:
   contents: write
