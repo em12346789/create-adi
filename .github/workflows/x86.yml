@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - run: sudo apt update
+      - run: sudo apt install coreutils jq mount qemu-utils util-linux wget parted e2fsprogs
       - run: ./create-alpine-disk-image --arch x86 --barebones --cloud aliyun --release 3.18  --script-host-arch x86_64 --script-host-os ubuntu --script-filename create.sh
       - run: sudo ./create.sh
       - run: ls -l
