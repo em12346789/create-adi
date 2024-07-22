@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
       - run: ./create-alpine-disk-image --arch x86 --barebones --cloud aliyun --release 3.18  --script-host-arch x86_64 --script-host-os ubuntu --script-filename create.sh
       - run: ls -l
-      - run: git config --global user.email "someone@example.com
+      - run: git config --global user.email "someone@example.com"
       - run: git config --global user.name "Someone"
       - run: git add create.sh
       - run: git commit -m "Script generated"
