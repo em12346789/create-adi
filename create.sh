@@ -162,6 +162,8 @@ error_cleanup() {
     cat "$chroot_dir"/chroot.log >> "$logfile"
   fi
 
+  cat "$logfile"
+
   normal_cleanup "error"
 }
 
