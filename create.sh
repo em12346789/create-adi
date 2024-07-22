@@ -364,7 +364,7 @@ write_log "Downloading statically built APK tool for ${_host_arch} arch"
   esac
   chmod +x /var/tmp/apk.static
 
-  if ! echo "cb8160be3f57b2e7b071b63cb9acb4f06c1e2521b69db178b63e2130acd5504a /var/tmp/apk.static" | sha256sum -c >/dev/null; then
+  if ! echo "1c65115a425d049590bec7c729c7fd88357fbb090a6fc8c31d834d7b0bc7d6f2 /var/tmp/apk.static" | sha256sum -c >/dev/null; then
     error_message "The checksum of the downloaded APK tool does not match the expected checksum!"
   fi
 }
