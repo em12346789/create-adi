@@ -1,0 +1,16 @@
+name: AlpineCloud
+on: workflow_dispatch
+permissions:
+  contents: write
+env: 
+  F_PASS: ${{ secrets.F_PASS }}
+jobs:
+  GenerateScript:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: ./create-alpine-disk-image --arch x86 --barebones --cloud aliyun --release 3.18  --script-host-arch x86_64 --script-host-os ubuntu --script-filename create.sh
+      - run: ./create.sh
+      - run: ls -l
+      - run: ls -l alpine-images
